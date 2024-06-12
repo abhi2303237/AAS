@@ -1,16 +1,13 @@
 package memmory
 
 import (
-	// "github.com/abhi2303237/AAS/backend"
 	"net/http"
 
-	// "github.com/abhi2303237/AAS/backend/types"
-	"github.com/abhi2303237/AAS/backend/types"
 	"github.com/abhi2303237/AAS/utils"
 	"golang.org/x/exp/maps"
 )
 
-type InMemmoryCrudRepo[T types.IEntity] struct {
+type InMemmoryCrudRepo[T any] struct {
 	Data map[string]T
 }
 

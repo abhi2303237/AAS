@@ -1,10 +1,6 @@
 package backend
 
-import "github.com/abhi2303237/AAS/backend/types"
-
-// import "github.com/abhi2303237/AAS/backend/types"
-
-type ICrudRepo[T types.IEntity] interface {
+type ICrudRepo[T any] interface {
 	Get() ([]T, error)
 	GetById(id string) (*T, error)
 	Put(e *T, id string) (*T, error)
