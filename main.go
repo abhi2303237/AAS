@@ -13,15 +13,16 @@ import (
 	"github.com/gofiber/fiber/v2/log"
 
 	"github.com/abhi2303237/AAS/conceptDescription"
+	"github.com/abhi2303237/AAS/utils"
 	"github.com/gofiber/fiber/v2"
 
-	"github.com/abhi2303237/AAS/ioc"
 	middleware "github.com/oapi-codegen/fiber-middleware"
 )
 
 func main() {
-	ioc.InitializeIocContainer()
-	port := flag.String("port", "8080", "Port for test HTTP server")
+	conceptDescription.InitializeIocContainer()
+	config := utils.GetConfig()
+	port := flag.String("port", config.Port, "Port for test HTTP server")
 	flag.Parse()
 
 	// Create an instance of our handler which satisfies the generated interface
@@ -47,6 +48,8 @@ func NewFiberConceptDescriptionServer(conceptDescriptionRepo *conceptDescription
 
 	// This is how you set up a basic fiber router
 	app := fiber.New()
+	utils.InitRequestLogger(app)
+	utils.InitMetrics(app.Group("/actuator"))
 
 	// Use our validation middleware to check all requests against the
 	// OpenAPI schema.
