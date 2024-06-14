@@ -4,9 +4,11 @@ import (
 	"database/sql"
 
 	"github.com/abhi2303237/AAS/backend/memmory"
+	"github.com/abhi2303237/AAS/backend/mongodb"
 	"github.com/abhi2303237/AAS/backend/mssql"
 	"github.com/abhi2303237/AAS/backend/types"
 	"github.com/abhi2303237/AAS/utils"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 func NewConceptDescriptionCrudRepo() types.ICrudRepo[ConceptDescription] {
@@ -27,6 +29,17 @@ func NewConceptDescriptionCrudRepo() types.ICrudRepo[ConceptDescription] {
 		}
 		mssqlCrudRepo.Init()
 		return mssqlCrudRepo
+
+	case "mongodb":
+		db = &mongodb.MongoDb{ConnectionString: config.MongoConnectionString}
+		mongoCrudRep := &mongodb.MongoCrudRepo[ConceptDescription]{
+			EntityName:   "ConceptDescription",
+			DatabaseName: "AAS",
+			Db:           db.GetDatabase().(*mongo.Client),
+		}
+		mongoCrudRep.Init()
+		return mongoCrudRep
+
 	default:
 		db = &memmory.InMemmoryDB[ConceptDescription]{
 			Data: make(map[string]ConceptDescription),

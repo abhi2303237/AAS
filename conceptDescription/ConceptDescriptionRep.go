@@ -1,8 +1,9 @@
 package conceptDescription
 
 import (
-	"log"
 	"net/http"
+
+	"github.com/gofiber/fiber/v2/log"
 
 	"github.com/abhi2303237/AAS/backend/types"
 	"github.com/abhi2303237/AAS/utils"

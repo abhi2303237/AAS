@@ -20,6 +20,8 @@ type Config struct {
 	EnableMetricsUi bool   `env:"ENABLE_METRICS_UI" envDefault:"false"`
 	Backend         string `env:"BACKEND" envDefault:"memmory"`
 
+	MongoConnectionString string `env:"MONGO_CON_STRING"`
+
 	DBServer   string `env:"MSSQL_SERVER"`
 	DBPort     int    `env:"MSSQL_PORT"`
 	DBUser     string `env:"MSSQL_USER"`

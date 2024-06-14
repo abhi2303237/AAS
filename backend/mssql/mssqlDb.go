@@ -5,7 +5,8 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"log"
+
+	"github.com/gofiber/fiber/v2/log"
 
 	"github.com/abhi2303237/AAS/backend/types"
 	"github.com/golobby/container/v3"

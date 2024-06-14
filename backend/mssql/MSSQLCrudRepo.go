@@ -4,8 +4,9 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"log"
 	"net/http"
+
+	"github.com/gofiber/fiber/v2/log"
 
 	"github.com/abhi2303237/AAS/utils"
 	"golang.org/x/exp/maps"

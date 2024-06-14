@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  mongo:
+    image: mongo:5.0.10
+    # Provide mongo config
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoAdmin
+      MONGO_INITDB_ROOT_PASSWORD: mongoPassword
+    # Set health checks to wait until mongo has started
+    #volumes:
+    # -  ./data-vol:/data/db 
+    healthcheck:
+      test: mongo
+      interval: 10s
+      start_period: 5s
+      retries: 5
+    # Maps tcp port to host
+    ports:
+     - 27017:27017
