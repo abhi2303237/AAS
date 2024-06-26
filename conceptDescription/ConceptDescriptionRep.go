@@ -65,7 +65,8 @@ func (repo *ConceptDescriptionRepo) PutConceptDescriptionById(c *fiber.Ctx, cdId
 }
 
 func (repo *ConceptDescriptionRepo) GetDescription(c *fiber.Ctx) error {
-	return c.SendStatus(http.StatusOK)
+	description := "This project is a comprehensive implementation of the DotAAS Part 2 HTTP/REST Submodel Service Specification, which is part of the Specification of the Asset Administration Shell. It provides a set of APIs for managing Concept Descriptions, including operations to get, post, delete, and update Concept Descriptions. The project also includes a self-describing endpoint that returns the service's capabilities and profiles. The implementation follows the guidelines and standards set by the Industrial Digital Twin Association (IDTA) to ensure interoperability and consistency across different systems."
+	return c.Status(http.StatusOK).SendString(description)
 }
 
 func NewConceptDescriptionRepo() ServerInterface {

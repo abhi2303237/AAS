@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../../configuration-schema.json
+package: SubmodelRegistry
+generate:
+  fiber-server: true
+  embedded-spec: true
+  models: true
+output: SubmodelRegistry/submodel_registry.gen.go

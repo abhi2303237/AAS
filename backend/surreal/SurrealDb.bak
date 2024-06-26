@@ -1,0 +1,108 @@
+// package surreal
+
+// import (
+// 	"github.com/gofiber/fiber/v2/log"
+
+// 	"github.com/abhi2303237/AAS/backend"
+// 	"github.com/surrealdb/surrealdb.go"
+// )
+
+// type SurealDatabase struct {
+// 	Host       string
+// 	User       string
+// 	Password   string
+// 	Connection *surrealdb.DB
+// }
+
+// func (db *SurealDatabase) Connect() bool {
+// 	connection, err := surrealdb.New(db.Host)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 		return false
+// 	}
+// 	db.Connection = connection
+// 	return true
+// }
+
+// func NewDatabase() backend.IDatabase {
+// 	Sureal := SurealDatabase{
+// 		Host:     "ws://localhost:8000/rpc",
+// 		User:     "root",
+// 		Password: "root",
+// 	}
+// 	Sureal.Connect()
+// 	return &Sureal
+// }
+
+// // func main() {
+// // 	db, err := surrealdb.New("ws://localhost:8000/rpc")
+// // 	if err != nil {
+// // 		panic(err)
+// // 	}
+
+// // 	if _, err = db.Signin(map[string]interface{}{
+// // 		"user": "root",
+// // 		"pass": "root",
+// // 	}); err != nil {
+// // 		panic(err)
+// // 	}
+
+// // 	if _, err = db.Use("test", "test"); err != nil {
+// // 		panic(err)
+// // 	}
+
+// // 	// Create user
+// // 	user := User{
+// // 		Name:    "John",
+// // 		Surname: "Doe",
+// // 	}
+
+// // 	// Insert user
+// // 	data, err := db.Create("user", user)
+// // 	if err != nil {
+// // 		panic(err)
+// // 	}
+
+// // 	// Unmarshal data
+// // 	createdUser := make([]User, 1)
+// // 	err = surrealdb.Unmarshal(data, &createdUser)
+// // 	if err != nil {
+// // 		panic(err)
+// // 	}
+
+// // 	// Get user by ID
+// // 	data, err = db.Select(createdUser[0].ID)
+// // 	if err != nil {
+// // 		panic(err)
+// // 	}
+
+// // 	// Unmarshal data
+// // 	selectedUser := new(User)
+// // 	err = surrealdb.Unmarshal(data, &selectedUser)
+// // 	if err != nil {
+// // 		panic(err)
+// // 	}
+
+// // 	// Change part/parts of user
+// // 	changes := map[string]string{"name": "Jane"}
+// // 	if _, err = db.Change(selectedUser.ID, changes); err != nil {
+// // 		panic(err)
+// // 	}
+
+// // 	// Update user
+// // 	if _, err = db.Update(selectedUser.ID, changes); err != nil {
+// // 		panic(err)
+// // 	}
+
+// // 	if _, err = db.Query("SELECT * FROM $record", map[string]interface{}{
+// // 		"record": createdUser[0].ID,
+// // 	}); err != nil {
+// // 		panic(err)
+// // 	}
+
+// // 	// Delete user by ID
+// // 	if _, err = db.Delete(selectedUser.ID); err != nil {
+// // 		panic(err)
+// // 	}
+
+// // }
