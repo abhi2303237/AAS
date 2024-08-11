@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/log"
 )
 
 type Error struct {
@@ -29,5 +30,17 @@ func GetError(code int, message string) error {
 	return &Error{
 		Code:    int32(code),
 		Message: message,
+	}
+}
+
+func HandleFatal(err error) {
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func HandleError(err error) {
+	if err != nil {
+		log.Error(err)
 	}
 }

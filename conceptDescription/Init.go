@@ -7,12 +7,15 @@ import (
 	"github.com/abhi2303237/AAS/backend/mongodb"
 	"github.com/abhi2303237/AAS/backend/mssql"
 	"github.com/abhi2303237/AAS/backend/types"
+	"github.com/abhi2303237/AAS/conceptDescription/config"
 	"github.com/abhi2303237/AAS/utils"
+	"github.com/golobby/container/v3"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
 func NewConceptDescriptionCrudRepo() types.ICrudRepo[ConceptDescription] {
-	config := utils.GetConfig()
+	var config config.Config
+	utils.HandleFatal(container.Resolve(&config))
 	var db types.IDatabase
 	switch config.Backend {
 	case "mssql":
